@@ -1,0 +1,32 @@
+{
+  "name": "preeti-ranjan-portfolio",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "server": "node server/index.js",
+    "build": "vite build",
+    "preview": "vite preview --host 127.0.0.1",
+    "start": "set NODE_ENV=production&& node server/index.js"
+  },
+  "dependencies": {
+    "@vitejs/plugin-react": "latest",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "framer-motion": "latest",
+    "lucide-react": "latest",
+    "nodemailer": "^10.0.10",
+    "react": "latest",
+    "react-dom": "latest",
+    "react-router-dom": "latest",
+    "vite": "latest"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.3.3",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.49",
+    "tailwindcss": "^3.4.17"
+  }
+}

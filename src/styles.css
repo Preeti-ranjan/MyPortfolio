@@ -1,0 +1,248 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  scroll-behavior: smooth;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  background: #05070b;
+  overflow-x: hidden;
+}
+
+button,
+a,
+input,
+textarea {
+  font: inherit;
+}
+
+@layer components {
+  .btn-primary,
+  .btn-secondary,
+  .btn-ghost {
+    @apply inline-flex min-h-11 items-center justify-center gap-2 rounded-full px-5 text-sm font-semibold transition focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan focus-visible:ring-offset-2 focus-visible:ring-offset-ink;
+  }
+
+  .btn-primary {
+    @apply bg-white text-ink hover:bg-cyan;
+  }
+
+  .btn-primary:disabled {
+    @apply cursor-not-allowed opacity-60 hover:bg-white;
+  }
+
+  .btn-secondary {
+    @apply border border-cyan/30 bg-cyan/10 text-cyan hover:border-cyan/70 hover:bg-cyan/15;
+  }
+
+  .btn-ghost {
+    @apply border border-line bg-white/5 text-white hover:border-white/25 hover:bg-white/10;
+  }
+
+  .icon-link {
+    @apply grid h-11 w-11 place-items-center rounded-full border border-line bg-white/5 text-slate-200 transition hover:border-cyan/50 hover:bg-cyan/10 hover:text-cyan focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan;
+  }
+
+  .social-link {
+    @apply inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-line bg-white/5 px-4 text-sm font-semibold text-slate-200 transition hover:border-cyan/50 hover:bg-cyan/10 hover:text-cyan focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan;
+  }
+
+  .feature-card {
+    @apply min-h-56 rounded-3xl border border-line bg-white/[0.035] p-6 transition duration-300 hover:-translate-y-1 hover:border-cyan/40 hover:bg-cyan/[0.055] hover:shadow-glow;
+  }
+
+  .skill-pill,
+  .tech-badge {
+    @apply rounded-full border border-white/10 bg-white/[0.055] px-3 py-1.5 text-sm text-slate-200 transition hover:border-cyan/40 hover:text-white;
+  }
+
+  .tech-badge {
+    @apply text-xs;
+  }
+
+  .filter-button {
+    @apply rounded-full border border-line bg-white/[0.035] px-4 py-2 text-sm font-semibold text-slate-300 transition hover:border-cyan/40 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan;
+  }
+
+  .filter-button-active {
+    @apply border-cyan/50 bg-cyan/10 text-cyan;
+  }
+
+  .project-card {
+    @apply overflow-hidden rounded-3xl border border-line bg-white/[0.035] transition duration-300 hover:-translate-y-1 hover:border-cyan/40 hover:shadow-glow;
+  }
+
+  .repo-row {
+    @apply flex items-center justify-between gap-4 rounded-2xl border border-line bg-white/[0.035] p-4 text-slate-300 transition hover:border-cyan/40 hover:bg-cyan/[0.055] hover:text-cyan focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan;
+  }
+}
+
+.bg-grid {
+  background-image:
+    linear-gradient(rgba(148, 163, 184, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(148, 163, 184, 0.08) 1px, transparent 1px);
+  background-size: 42px 42px;
+  mask-image: radial-gradient(circle at center, black 0%, transparent 78%);
+}
+
+.particle-field span {
+  position: absolute;
+  left: calc((var(--i) * 7%) + 2%);
+  top: calc((var(--i) * 11%) % 100%);
+  width: 3px;
+  height: 3px;
+  border-radius: 999px;
+  background: rgba(56, 213, 255, 0.55);
+  box-shadow: 0 0 18px rgba(56, 213, 255, 0.35);
+  animation: particle-drift 9s ease-in-out infinite;
+  animation-delay: calc(var(--i) * -0.6s);
+}
+
+.cursor-dot,
+.cursor-ring {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 80;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+}
+
+.cursor-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: #38d5ff;
+}
+
+.cursor-ring {
+  width: 34px;
+  height: 34px;
+  margin-left: -14px;
+  margin-top: -14px;
+  border-radius: 999px;
+  border: 1px solid rgba(56, 213, 255, 0.65);
+}
+
+.hero-console {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  border-radius: 28px;
+  background:
+    radial-gradient(circle at 20% 0%, rgba(56, 213, 255, 0.12), transparent 32%),
+    radial-gradient(circle at 80% 20%, rgba(139, 92, 246, 0.14), transparent 35%),
+    rgba(255, 255, 255, 0.035);
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.34);
+}
+
+.hero-console::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 100% 38px;
+  opacity: 0.45;
+  pointer-events: none;
+}
+
+.project-visual {
+  min-height: 270px;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.18);
+  background:
+    radial-gradient(circle at top left, rgba(56, 213, 255, 0.17), transparent 32%),
+    radial-gradient(circle at bottom right, rgba(139, 92, 246, 0.16), transparent 34%),
+    #090d14;
+}
+
+@media (min-width: 1024px) {
+  .lg\:grid .project-visual {
+    border-bottom: 0;
+    border-right: 1px solid rgba(148, 163, 184, 0.18);
+  }
+}
+
+.visual-toolbar {
+  display: flex;
+  gap: 7px;
+  padding: 14px 18px;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.14);
+}
+
+.visual-toolbar span {
+  width: 9px;
+  height: 9px;
+  border-radius: 999px;
+  background: rgba(148, 163, 184, 0.55);
+}
+
+@keyframes particle-drift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+    opacity: 0.1;
+  }
+  50% {
+    transform: translate3d(14px, -26px, 0);
+    opacity: 0.45;
+  }
+}
+
+@keyframes drift {
+  0%,
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+  50% {
+    transform: translate3d(-47%, 22px, 0);
+  }
+}
+
+@keyframes drift-slow {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(-28px, 18px, 0);
+  }
+}
+
+.animate-drift {
+  animation: drift 12s ease-in-out infinite;
+}
+
+.animate-drift-slow {
+  animation: drift-slow 15s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+
+  .particle-field {
+    display: none;
+  }
+}
